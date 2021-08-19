@@ -3,7 +3,7 @@ Assignments done for the Computer Vision course in IIITDM Kancheepuram, July to 
 
 ## Assignment 1
 * thresholding an image
-* 1d convolution in saptial domain
+* 1d convolution in spatial domain
 
 ### Done by 
 
