@@ -1,6 +1,10 @@
 # Computer Vision
 Assignments done for the Computer Vision course in IIITDM Kancheepuram, July to November 2021 semester
 
+## Assignment 1
+* thresholding an image
+* 1d convolution in saptial domain
+
 ### Done by 
 
 * __[Santosh Sinduja S](https://github.com/Sinduja-S)__
