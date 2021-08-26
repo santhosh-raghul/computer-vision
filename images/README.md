@@ -1,0 +1,1 @@
+Keep all images in this directory. This directory is gitignored.
