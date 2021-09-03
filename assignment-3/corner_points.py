@@ -7,7 +7,7 @@ def monotonicity(img):
 	img *= 255
 	return img.astype(np.uint8)
 
-img_orig = cv2.imread("../images/chessboard.jpg")
+img_orig = cv2.imread("../images/chessboard.png")
 img_orig = cv2.imread("../images/IMG_20210902_232538__02.jpg")
 scale = 8
 img_orig = cv2.resize(img_orig, (img_orig.shape[1]//scale, img_orig.shape[0]//scale))
@@ -72,9 +72,9 @@ while(conts != []):
 
 	all_lines.append(curr_line)
 
-for y, line in enumerate(all_lines):
-	for x, point in enumerate(line):
-		cv2.putText(img_orig, f'({x},{y})', point, cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+for x, line in enumerate(all_lines):
+	for y, point in enumerate(line):
+		cv2.putText(img_orig, f'({x},{y})', point, cv2.FONT_HERSHEY_SIMPLEX, 0.25, (0, 0, 255), 1)
 
 cv2.namedWindow("final", cv2.WND_PROP_FULLSCREEN | cv2.WINDOW_NORMAL)# | cv2.WINDOW_AUTOSIZE)
 cv2.imshow("final", img_orig)
