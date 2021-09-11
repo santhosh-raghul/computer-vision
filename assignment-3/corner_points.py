@@ -18,8 +18,8 @@ _, thresh = cv2.threshold(img, 0, 255, cv2.THRESH_OTSU)
 cv2.imshow("thresh", thresh)
 cv2.waitKey(0)
 
-_, hori = cv2.threshold(monotonicity(np.abs(cv2.Sobel(thresh, cv2.CV_16S, 1, 0))), 10, 255, cv2.THRESH_OTSU)
-_, vert = cv2.threshold(monotonicity(np.abs(cv2.Sobel(thresh, cv2.CV_16S, 0, 1))), 10, 255, cv2.THRESH_OTSU)
+_, hori = cv2.threshold(monotonicity(np.abs(cv2.Sobel(thresh, cv2.CV_16S, 1, 0, ksize=5))), 10, 255, cv2.THRESH_OTSU)
+_, vert = cv2.threshold(monotonicity(np.abs(cv2.Sobel(thresh, cv2.CV_16S, 0, 1, ksize=5))), 10, 255, cv2.THRESH_OTSU)
 
 hori_rect_e = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 3))
 hori_rect_d = cv2.getStructuringElement(cv2.MORPH_RECT, (20, 20))
