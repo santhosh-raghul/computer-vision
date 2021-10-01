@@ -7,14 +7,12 @@ import os
 CHECKERBOARD = (5,7)
 PATH = './images/set-2'
 
-# criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
-# print(criteria)
-
 objpoints = []
 imgpoints = [] 
 
 objp = np.zeros((1, CHECKERBOARD[0] * CHECKERBOARD[1], 3), np.float32)
 objp[0,:,:2] = np.lib.index_tricks.mgrid[0:CHECKERBOARD[0], 0:CHECKERBOARD[1]].T.reshape(-1, 2)
+print(objp)
 prev_img_shape = None
 
 images = os.listdir(PATH)
@@ -29,7 +27,6 @@ for img_path in images:
 	
 	if ret == True:
 		objpoints.append(objp)
-		# corners2 = cv2.cornerSubPix(gray, corners, (11,11),(-1,-1), criteria)
 		imgpoints.append(corners)
 		img = cv2.drawChessboardCorners(img, CHECKERBOARD, corners, ret)
 	
@@ -41,13 +38,13 @@ cv2.destroyAllWindows()
 h,w = img.shape[:2]
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 
-print("Camera matrix : \n")
+print("Camera matrix:")
 print(mtx)
-print("dist : \n")
+print("Distortion Coefficients:")
 print(dist)
-print("rvecs : \n")
+print("rotation vectors:")
 print(rvecs)
-print("tvecs : \n")
+print("translation vectors:")
 print(tvecs)
 
 images = os.listdir(PATH)
@@ -61,6 +58,5 @@ for img_path in images:
 	x, y, w, h = roi
 	undist_cropped = undist[y:y+h, x:x+w]
 	cv2.imshow('original', img)
-	# cv2.imshow('undistorted full', undist)
 	cv2.imshow('undistorted cropped', undist_cropped)
 	cv2.waitKey(0) 
